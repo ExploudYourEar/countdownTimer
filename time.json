@@ -1,0 +1,6 @@
+{
+    "time":300,
+    "secondsAnimation":"fadeInDown",
+    "minutesAnimation":"rubberBand",
+    "endAnimation":"wobble"
+}

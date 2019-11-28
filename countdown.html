@@ -1,0 +1,91 @@
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="animate.css">
+</head>
+<body>
+    <div id="timer" style="position:fixed; top:200px; left:200px;" >
+        <div id="minutes" class="time">0</div><div class="time">:</div><div id="seconds" class="time">0</div>
+    </div>
+
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+            var time;
+            var seconds;
+            var minutes;
+            var secondsAnimation;
+            var minutesAnimation;
+            var endAnimation;
+        $(() => {
+            $.getJSON("time.json",(data) => {
+                time = data.time;
+                secondsAnimation = data.secondsAnimation;
+                minutesAnimation = data.minutesAnimation;
+                endAnimation = data.endAnimation;
+            seconds = time % 60 ;
+            minutes = Math.trunc(time / 60) ;
+            if(seconds.toString().length == 1){
+                
+                $("#seconds").html("0" + seconds);
+            }
+            else{
+                $("#seconds").html(seconds);
+            }
+            if(minutes.toString().length == 1){
+                $("#minutes").html("0" + minutes);;
+            }
+            else{
+                $("#minutes").html(minutes);;
+            }
+            countdown();
+            })
+        })
+        function countdown(){
+            var interval = setInterval(() => {
+                time -=1 ;
+                let newSeconds = time % 60 ;
+                let newMinutes = Math.trunc(time / 60) ;
+                if(newSeconds.toString().length == 1){
+                    $("#seconds").html("0" + newSeconds);
+                }
+                else{
+                    $("#seconds").html(newSeconds);
+                }
+                if(newMinutes.toString().length == 1){
+                    $("#minutes").html("0" + newMinutes);;
+                }
+                else{
+                    $("#minutes").html(newMinutes);;
+                }
+                if(seconds != newSeconds){
+                    animateCSS("#seconds",secondsAnimation);
+                }
+                if(minutes != newMinutes){
+                    animateCSS("#minutes",minutesAnimation);
+                }
+
+                seconds = newSeconds;
+                minutes = newMinutes;
+                if(time == 0) {
+                    animateCSS("#timer",endAnimation);
+                    clearInterval(interval);
+                }
+            },1000)
+        }
+
+        function animateCSS(element, animationName, callback) {
+    const node = document.querySelector(element)
+    node.classList.add('animated', animationName)
+
+    function handleAnimationEnd() {
+        node.classList.remove('animated', animationName)
+        node.removeEventListener('animationend', handleAnimationEnd)
+
+        if (typeof callback === 'function') callback()
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd)
+}
+        
+    </script>
+</body>
