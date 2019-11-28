@@ -16,3 +16,5 @@ You can change some parameters with the time.json file :
 All animation are provided by animate.css : https://daneden.github.io/animate.css/
 Check the link to see an example of each animation.
 You must type the animation AS IS (capital letters are important).
+
+You can also play with the font if you have some css knowledge.
