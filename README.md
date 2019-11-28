@@ -18,3 +18,5 @@ Check the link to see an example of each animation.
 You must type the animation AS IS (capital letters are important).
 
 You can also play with the font if you have some css knowledge.
+It's actually fairly easy ^^. 
+https://www.w3schools.com/cssref/pr_font_font-family.asp
