@@ -1,8 +1,7 @@
 # countdownTimer
 countdown timer using animate.css https://daneden.github.io/animate.css/ as his base 
 
-Mainly for OBS Usage.
-
+Mainly used for OBS.
 Download or Clone the project in a folder of your choice
 
 Then add a browser source and the source is the countdown.html file.
